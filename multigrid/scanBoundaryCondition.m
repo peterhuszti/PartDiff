@@ -1,6 +1,6 @@
 function [N,x,y,u] = scanBoundaryCondition()
 
-inputFile = fopen('E:\ELTE\_MSC 3\ParcDiff\generateBoundaryCondition\grid.txt', 'r');
+inputFile = fopen('..\generateBoundaryCondition\grid.txt', 'r');
 
 skip = '';
 while strcmp(skip,'@') == 0
