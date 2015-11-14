@@ -6,7 +6,7 @@ xi yi u
 Where N the number of point at the bound of the grid
 [xi;yi] a point at the bound of the grid
 u is the condition at this point
-
+@
 16
 -1 -1 0.19685
 -0.5 -1 -0.471953
