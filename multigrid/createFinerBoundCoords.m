@@ -1,9 +1,9 @@
-function [finerBoundCoordsX,finerBoundCoordsX] = createFinerBoundCoords(boundCoordsX,boundCoordsY)
+function [finerBoundCoordsX,finerBoundCoordsY] = createFinerBoundCoords(boundCoordsX,boundCoordsY, finerGrid)
 
 finerBoundCoordsX = zeros(1, 2*length(boundCoordsX) - 1);
 finerBoundCoordsY = zeros(1, 2*length(boundCoordsY) - 1);
 
-for i = 1:length(finerGridX)
+for i = 1:length(finerGrid)
     if mod(i,2) == 1
         finerBoundCoordsX(i) = boundCoordsX(floor(i/2) + 1);
         finerBoundCoordsY(i) = boundCoordsY(floor(i/2) + 1);
