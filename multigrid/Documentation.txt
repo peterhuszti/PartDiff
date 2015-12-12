@@ -34,7 +34,7 @@ parameters:		vector, vector
 return type:	vector, vector
 
 info:			It expects the two coordinate vectors of the boundary conditions.
-				Because the coordiante vectors are redundant, it will return 
+				Because the coordinate vectors are redundant, it will return 
 				two vectors that are not.
 				
 _________________________________________________________________________________				
@@ -43,7 +43,7 @@ name:			initializeGrid
 parameters:		vector
 return type:	matrix
 
-info:			The grids are stored as matrixes, which contain the z coordinates
+info:			The grids are stored as matrices, which contain the z coordinates
 				of the functions.
 				This method sets the grid matrix's first and last rows and columns 
 				based on the boundary conditions, given as input parameter.
@@ -52,7 +52,7 @@ info:			The grids are stored as matrixes, which contain the z coordinates
 _________________________________________________________________________________				
 
 name:			createFinerBoundCoords
-parameters:		vector, vector
+parameters:		vector, vector, matrix
 return type:	vector, vector
 
 info:			The method expects not coordinate vectors as inputs, and creates 
@@ -66,19 +66,29 @@ parameters:		matrix
 return type:	matrix
 
 info:			Creates a twice as fine grid from the input grid.
-				It calculates the new values with the prolongation function.
+				To calculate the new values, it uses arithmetic mean.
 				
 _________________________________________________________________________________				
 
-name:			prolongation
-parameters:		integer, integer, matrix
-return type:	float
+name:			createBoundaryCondition
+parameters:		function, integer, integer, integer
+return type:	integer, vector, vector, vector
 
-info:			Prolongate the point based on the two input coordinates to the 
-				new, finer grid. Uses average to calculate if it is not on the 
-				old grid.
+info:			Creates boundary conditions based on the selected function.
+				Its result is similar to using scanBoundaryConditions and
+				then getBoundCoords.
+				
+_________________________________________________________________________________
 
+name:			GaussSeidel
+parameters:		matrix, vector
+return type:	vector
 
+info:			Makes one iteration step with Gauss-Seidel method, reducing the
+				high frequency errors.
+				Based on a public function written by Mohammad Y. Saadeh
+				
+_________________________________________________________________________________
 
 
 

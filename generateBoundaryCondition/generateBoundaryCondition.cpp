@@ -35,7 +35,7 @@ int main()
 
 	for(int i=0; i<DB; ++i)
 	{
-		u.push_back(LO + static_cast <double> (rand()) /( static_cast <double> (RAND_MAX/(HI-LO))));
+		u.push_back(LO + static_cast<double> (rand()) /( static_cast<double> (RAND_MAX/(HI-LO))));
 	}
 
 	for(int i=0; i<N; ++i)
