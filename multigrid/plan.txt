@@ -1,0 +1,14 @@
+for 1:Lmax	
+	doubleBoundCoarseness(bound) %TODO
+
+GS(r)
+
+AH * wH = Restriction(- AH * ~uh)	
+	->	wH-t kiszámolom: ha legdurvébban vagyok: 
+		A-1, ha nem, akkor újrakezdem a módszert
+
+~uh+1 = Prolongation(wH)
+
+GS(r)
+
+
