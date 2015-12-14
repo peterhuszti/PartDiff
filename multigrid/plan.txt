@@ -17,3 +17,5 @@ MGC
 kaszkád
 
 	durva rácson megoldom pontosan
+	
+	onnan megyek lefelé, mindig csak simítok
