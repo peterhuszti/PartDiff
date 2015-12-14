@@ -1,14 +1,19 @@
-for 1:Lmax	
-	doubleBoundCoarseness(bound) %TODO
+MGC
 
-GS(r)
+	for 1:Lmax	
+		doubleBoundCoarseness(bound) %TODO
 
-AH * wH = Restriction(- AH * ~uh)	
-	->	wH-t kiszámolom: ha legdurvébban vagyok: 
-		A-1, ha nem, akkor újrakezdem a módszert
+	GS(r)
 
-~uh+1 = Prolongation(wH)
+	AH * wH = Restriction(- AH * ~uh)	
+		->	wH-t kiszámolom: ha legdurvébban vagyok: 
+			A-1, ha nem, akkor újrakezdem a módszert
 
-GS(r)
+	~uh+1 = Prolongation(wH)
+
+	GS(r)
 
 
+kaszkád
+
+	durva rácson megoldom pontosan
