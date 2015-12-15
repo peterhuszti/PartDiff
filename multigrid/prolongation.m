@@ -4,6 +4,6 @@ function pv = prolongation(v)
 n = length(v);
 pv = zeros(1, 2*n - 1);
 
-grid = initializeGrid(v); %TODO
+grid = initializeGrid(v,pv); %TODO
 finerGrid = createFinerGrid(grid);
 pv = convertGridToVectorWithoutEdges(finerGrid); %TODO
