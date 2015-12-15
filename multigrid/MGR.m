@@ -1,15 +1,7 @@
-function MGR(test, L, r, type)
+function x = MGR(test, L, r, type)
 
-if(test == -1)
-    if(type == 1)
-        MGRWithBoundaryConditionCascad(L,r);
-    else
-        MGRWithBoundaryConditionMGC(L,r);
-    end
+if(type == 1)
+    x = Cascad(test,L,r);
 else
-    if(type == 1)
-        MGRWithTestCaseCascad(test,L,r);
-    else
-        MGRWithTestCaseMGC(test,L,r);
-    end
+    x = MGC(test,L,r);
 end

@@ -10,6 +10,13 @@ g = -1 * ones(1,N);
 d = 4 * ones(1,N);
 B = zeros(N,5);
 
+j = n+1;
+for i=1:n-1
+    e(j-1) = 0;
+    c(j) = 0;
+    j = j + n;
+end    
+
 c(1) = 0;
 e(N) = 0;
 f(1) = 0;
@@ -23,6 +30,6 @@ B(1:N,3) = d;
 B(1:N,4) = c;
 B(1:N,5) = f;
 
-v = [-3 -1 0 1 3];
+v = [-1*n -1 0 1 n];
 
 A = full(spdiags(B,v,N,N));

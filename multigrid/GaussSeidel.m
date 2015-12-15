@@ -1,6 +1,6 @@
-function x = GaussSeidel(A,c,r)
+function x = GaussSeidel(A,b,r)
 
-n = length(c);
+n = length(b);
 x = zeros(n,1);
 
 for k = 1:r
@@ -9,6 +9,6 @@ for k = 1:r
 		j(i) = [];
 		temp = x;
 		temp(i) = [];
-		x(i) = (c(i) - sum(A(i,j) * temp)) / A(i,i);
+		x(i) = (b(i) - sum(A(i,j) * temp)) / A(i,i);
 	end
 end

@@ -8,14 +8,14 @@ boundY = linspace(LO,HI,density);
 u = zeros(1,N);
 
 for i = 1:density
-    u(i) = testFunction(i, 1);
+    u(i) = testFunction(boundX(i), boundY(1));
 end    
 for i = 2:density
-    u(i+density-1) = testFunction(density, i);
+    u(i+density-1) = testFunction(boundX(density), boundY(i));
 end    
 for i = 2:density
-    u(i + 2*density - 2) = testFunction(density-i+1, density);
+    u(i + 2*density - 2) = testFunction(boundX(density-i+1), boundY(density));
 end    
 for i = 2:density-1
-    u(i + 3*density - 3) = testFunction(1, density-i+1);
+    u(i + 3*density - 3) = testFunction(boundX(1), boundY(density-i+1));
 end    

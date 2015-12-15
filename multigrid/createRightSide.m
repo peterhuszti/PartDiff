@@ -1,7 +1,7 @@
 function b = createRightSide(u)
 
-N = (sqrt(length(u))-1)^2;
-n = sqrt(length(u)) - 1;
+N = (length(u)/4 - 1)^2;
+n = sqrt(N);
 b = zeros(1,N);
 
 j = 2;
@@ -12,12 +12,12 @@ for k=1:4
             i = i + 1;
         else
             if k == 2
-                i = i + 3;
+                i = i + n;
             else
                 if k == 3
                     i = i - 1;
                 else
-                    i = i - 3;
+                    i = i - n;
                 end
             end
         end
@@ -26,20 +26,17 @@ for k=1:4
         j = j + 1;
     end
     if k == 1
-            i = i - 3;
+            i = i - n;
         else
             if k == 2
                 i = i + 1;
             else
                 if k == 3
-                    i = i + 3;
+                    i = i + n;
                 else
-                    i = i - 3;
+                    i = i - n;
                 end
             end
     end
     j = j + 1;
 end    
-
-
-
