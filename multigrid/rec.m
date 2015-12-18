@@ -27,11 +27,11 @@ dgrid = initializeGrid(du,dw);
 fgrid = createFinerGrid(dgrid);
 fw = convertGridToVectorWithoutEdges(fgrid);
 
-% if L == 0
+if L == 0
     x = x + fw';
-% else
-%     rec((length(dgrid)-2)^2,dgrid,r,L-1,boundX,boundY);
-% end
+else
+    rec((length(dgrid)-2)^2,dgrid,r,L-1,boundX,boundY);
+end
 
 % pause;
 % grid = initializeGrid(u,x);
