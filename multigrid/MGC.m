@@ -12,44 +12,44 @@ else
         fgrid = createFinerGrid(grid);
         u = getEdgeFromGrid(fgrid);
         N = (length(fgrid)-2)^2;
+        [boundX,boundY] = createFinerBoundCoords(boundX,boundY,fgrid);
     end
     
-    A = createLESMatrix(n);
+    A = createLESMatrix(N);
     u = getEdgeFromGrid(fgrid);
     b = createRightSide(u);
-    x = GaussSeidel(A,b,r);
-    
-    error = b - A*x;
+    x = zeros(1,N);
+    x = GaussSeidel(A,b,r,x');
+
+    [X,Y] = meshgrid(boundX,boundY);
+    surf(X,Y,fgrid);
+
+    error = b' - A*x;
     fgrid = initializeGrid(u,error); 
-    correction = restriction(fgrid);
-    
-    w = prolongation(correction);
-    
-    x = x + wp;
-    
-%    [N,boundX,boundY,u] = createBoundaryCondition(testSelector(test), -1, 1, 5);
-%    n = (sqrt(N)-1)^2;
-%    A = createLESMatrix(n);
-%    b = createRightSide(u);
-%    x = A \ b';
-% 
-%    grid = initializeGrid(u,x);
-%    [X,Y] = meshgrid(boundX,boundY);
-%    surf(X,Y,grid);
-% 
-%    for i=1:L
-%        pause;
-%        grid = initializeGrid(u,x);
-%        fgrid = createFinerGrid(grid);
-%        N = (length(fgrid)-2)^2;
-%        A = createLESMatrix(N);
-%        u = getEdgeFromGrid(fgrid);
-%        b = createRightSide(u);
-%        x = GaussSeidel(A,b,r);
-% 
-%        [boundX,boundY] = createFinerBoundCoords(boundX,boundY,fgrid);
-%        [X,Y] = meshgrid(boundX,boundY);
-%        surf(X,Y,fgrid);
-%    end    
+    m = length(fgrid);
+    dgrid = fgrid(1:2:m,1:2:m);
+
+    dA = createLESMatrix((length(dgrid)-2)^2);
+    du = getEdgeFromGrid(dgrid);
+    db = createRightSide(du);
+    dw = dA \ db';    
+
+    dgrid = initializeGrid(du,dw);
+    fgrid = createFinerGrid(dgrid);
+    fw = convertGridToVectorWithoutEdges(fgrid);
+
+    x = x + fw';
+
+    pause;
+    grid = initializeGrid(u,x);
+    [X,Y] = meshgrid(boundX,boundY);
+    surf(X,Y,grid);
+
+    x = GaussSeidel(A,b,r,x);
+
+    pause;
+    grid = initializeGrid(u,x);
+    [X,Y] = meshgrid(boundX,boundY);
+    surf(X,Y,grid);
 end   
 

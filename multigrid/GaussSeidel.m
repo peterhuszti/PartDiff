@@ -1,7 +1,7 @@
-function x = GaussSeidel(A,b,r)
+function x = GaussSeidel(A,b,r,x)
 
 n = length(b);
-x = zeros(n,1);
+%x = zeros(n,1);
 
 for k = 1:r
 	for i = 1:n
